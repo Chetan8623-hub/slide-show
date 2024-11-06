@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slideshow</title>
+    <style>
+        body{
+            background-color: #f2f7f5 ;
+        }
+        .slide {
+            border: black 2px solid;
+            height: 400px;
+            width: 600px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .container {
+            margin: 50px auto;
+            width: fit-content;
+            position: relative;
+        }
+        .action {
+            position: absolute;
+            height: 60px;
+            top: 40%;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .text{
+            text-align: center;
+        }
+        .back {
+            left: 0;
+        }
+        .back:hover {
+            transform: scale(0.8) translateX(-10px);
+        }
+        .next {
+            right: 0;
+        }
+        .next:hover {
+            transform: scale(0.8) translateX(10px);
+        }
+    </style>
+</head>1
+<body>
+    <div class="container">
+        <img src="./img/animal1.jpg" class="slide" id="slide">
+        <img src="left.png" class="action back" onclick="back()">
+        <img src="right.png" class="action next" onclick="next()">
+        <H2 class="text"><p><b>Super-Luxury-Cars</b></p></H2>
+    </div>
+    <script>
+        const img = [
+            "CAR.webp",
+            "CAR2.webp",
+            "CAR3.webp",
+            "CAR4.webp",
+            "CAR5.webp"
+        ];
+        let index = 0; 
+        const slide = document.getElementById('slide');
+        function next() {
+           if(index < img.length -1)
+           {
+            index++;
+           }else{
+            index=0;
+           }
+            slide.src = img[index]
+        }
+        function back() {
+            if(index>0)
+           {
+            index--;
+           }else{
+            index = img.length -1;
+           }
+            slide.src = img[index]
+        }
+        setInterval(next,2000)
+    </script>
+</body>
+</html>
